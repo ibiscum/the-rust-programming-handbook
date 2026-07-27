@@ -5,13 +5,32 @@
 // [dependencies]
 // futures = "0.3"
 
-use std::future::Future;
-use std::time::Duration;
 use std::thread::sleep; // We'll use this for a simple blocking sleep
+use std::time::Duration;
+use std::future::Future;
+use std::pin::Pin;
+use std::task::{Context, Poll, RawWaker, RawWakerVTable, Waker};
 
-// We need an executor to run our async functions.
-// `block_on` is a simple one from the `futures` crate.
-use futures::executor::block_on;
+// Minimal local executor so this example works without external crates.
+fn block_on<F: Future>(future: F) -> F::Output {
+    fn dummy_raw_waker() -> RawWaker {
+        fn no_op(_: *const ()) {}
+        fn clone(_: *const ()) -> RawWaker { dummy_raw_waker() }
+        static VTABLE: RawWakerVTable = RawWakerVTable::new(clone, no_op, no_op, no_op);
+        RawWaker::new(std::ptr::null(), &VTABLE)
+    }
+
+    let waker = unsafe { Waker::from_raw(dummy_raw_waker()) };
+    let mut context = Context::from_waker(&waker);
+    let mut future = Box::pin(future);
+
+    loop {
+        match Pin::as_mut(&mut future).poll(&mut context) {
+            Poll::Ready(val) => return val,
+            Poll::Pending => std::thread::yield_now(),
+        }
+    }
+}
 
 /// This is an async function. It returns a `Future`.
 async fn fetch_simulated_data(task_id: u32) -> String {
