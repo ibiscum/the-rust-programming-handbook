@@ -6,12 +6,19 @@ enum Message {
 }
 
 fn main() {
-    let msg = Message::Move { x: 10, y: 20 };
+    let messages = [
+        Message::Quit,
+        Message::Move { x: 10, y: 20 },
+        Message::Write(String::from("hello")),
+        Message::ChangeColor(255, 0, 128),
+    ];
 
-    match msg {
-        Message::Quit => println!("Quit message"),
-        Message::Move { x, y } => println!("Move to x: {}, y: {}", x, y),
-        Message::Write(text) => println!("Write message: {}", text),
-        Message::ChangeColor(r, g, b) => println!("Change color to red: {}, green: {}, blue: {}", r, g, b),
+    for msg in messages {
+        match msg {
+            Message::Quit => println!("Quit message"),
+            Message::Move { x, y } => println!("Move to x: {}, y: {}", x, y),
+            Message::Write(text) => println!("Write message: {}", text),
+            Message::ChangeColor(r, g, b) => println!("Change color to red: {}, green: {}, blue: {}", r, g, b),
+        }
     }
 }
