@@ -215,6 +215,18 @@ name = "chapter-1-tests"
 version = "0.1.0"
 
 [[package]]
+name = "chapter-10-tests"
+version = "0.1.0"
+
+[[package]]
+name = "chapter-11-tests"
+version = "0.1.0"
+
+[[package]]
+name = "chapter-12-tests"
+version = "0.1.0"
+
+[[package]]
 name = "chapter-2-tests"
 version = "0.1.0"
 

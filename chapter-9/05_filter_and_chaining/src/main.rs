@@ -23,9 +23,10 @@ fn main() {
     // Get scores above 70, and add a 5-point bonus
     let adjusted_high_scores: Vec<i32> = scores.iter()
         // 1. Filter: Keep scores > 70
-        .filter(|&score| score > 70) 
+        .filter(|&&score| score > 70)
+        .copied()
         // 2. Map: Add 5 to the filtered scores
-        .map(|&score| score + 5) 
+        .map(|score| score + 5) 
         // 3. Collect: Execute the operations and build the final Vec
         .collect();
         

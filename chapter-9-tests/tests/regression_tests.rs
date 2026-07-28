@@ -15,20 +15,6 @@ fn run_binary(binary_name: &str) -> String {
     String::from_utf8_lossy(&output.stdout).to_string()
 }
 
-/// Helper function to check if a binary fails to compile
-fn binary_fails_to_compile(binary_name: &str) -> bool {
-    let output = Command::new("cargo")
-        .args(&[
-            "run",
-            "--package",
-            &format!("chapter_9_{}", binary_name),
-        ])
-        .output()
-        .expect(&format!("Failed to run {}", binary_name));
-
-    !output.status.success()
-}
-
 // ===== Iterator Basics =====
 
 #[test]
@@ -72,10 +58,12 @@ fn test_04_map_iterator_adapter() {
 }
 
 #[test]
-fn test_05_filter_and_chaining_fails_to_compile() {
+fn test_05_filter_and_chaining() {
+    let output = run_binary("05_filter_and_chaining");
     assert!(
-        binary_fails_to_compile("05_filter_and_chaining"),
-        "Expected chapter_9_05_filter_and_chaining to fail compilation (intentional type error example)"
+        output.contains("Evens:") && output.contains("Adjusted high scores"),
+        "Expected output to contain filter and chaining results, got: {}",
+        output
     );
 }
 

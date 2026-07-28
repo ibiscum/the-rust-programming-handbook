@@ -44,4 +44,8 @@ fn main() {
     let tweet = Tweet { 
         username: String::from("rustacean"), 
         content: String::from("Traits are cool!"), 
-        reply: false
+        reply: false,
+        retweet: false, 
+    };
+    notify(&tweet);
+}

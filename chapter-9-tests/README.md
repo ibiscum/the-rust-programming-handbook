@@ -11,7 +11,7 @@ The test suite validates 11 example programs covering iterators, closures, and p
 - `test_02_three_types_of_iterators` - Iter, iter_mut, and into_iter
 - `test_03_iterator_consumers` - Consumer methods like sum, product, collect
 - `test_04_map_iterator_adapter` - Adapter methods for transformation
-- `test_05_filter_and_chaining_fails_to_compile` - Intentional type error example (filter type mismatch)
+- `test_05_filter_and_chaining` - Chaining filter and map operations
 
 ### Iterator Consumers and Adapters (1 test)
 - `test_06_fold_and_find_consumers` - Fold and find operations on iterators
@@ -48,8 +48,6 @@ Each test follows the integration test pattern:
 1. Executes a chapter-9 binary using `cargo run --package chapter_9_*`
 2. Captures standard output
 3. Validates output contains expected strings demonstrating the concept
-
-**Special Case**: Test `test_05_filter_and_chaining_fails_to_compile` verifies that a project intentionally fails to compile (demonstrating a type error in filter closure).
 
 ## Documentation
 
