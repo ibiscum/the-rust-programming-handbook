@@ -265,6 +265,8 @@ members = [
   "chapter-13/10_async_basics",
   "chapter-13/11_tokio_basics",
   "chapter-13/12_mutex_lock_duration",
+  "chapter-13-tests",
+  "chapter-14-tests",
   "chapter-14/14_01_hello_web",
   "chapter-14/14_02_routing_basics",
   "chapter-14/14_03_shared_state",

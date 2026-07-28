@@ -227,6 +227,14 @@ name = "chapter-12-tests"
 version = "0.1.0"
 
 [[package]]
+name = "chapter-13-tests"
+version = "0.1.0"
+
+[[package]]
+name = "chapter-14-tests"
+version = "0.1.0"
+
+[[package]]
 name = "chapter-2-tests"
 version = "0.1.0"
 
@@ -468,6 +476,9 @@ version = "0.1.0"
 [[package]]
 name = "chapter_13_11_tokio_basics"
 version = "0.1.0"
+dependencies = [
+ "tokio",
+]
 
 [[package]]
 name = "chapter_13_12_mutex_lock_duration"
@@ -476,42 +487,100 @@ version = "0.1.0"
 [[package]]
 name = "chapter_14_14_01_hello_web"
 version = "0.1.0"
+dependencies = [
+ "axum",
+ "tokio",
+]
 
 [[package]]
 name = "chapter_14_14_02_routing_basics"
 version = "0.1.0"
+dependencies = [
+ "axum",
+ "tokio",
+]
 
 [[package]]
 name = "chapter_14_14_03_shared_state"
 version = "0.1.0"
+dependencies = [
+ "axum",
+ "serde",
+ "serde_json",
+ "tokio",
+]
 
 [[package]]
 name = "chapter_14_14_04_path_extractor"
 version = "0.1.0"
+dependencies = [
+ "axum",
+ "serde",
+ "serde_json",
+ "tokio",
+]
 
 [[package]]
 name = "chapter_14_14_05_query_params"
 version = "0.1.0"
+dependencies = [
+ "axum",
+ "serde",
+ "serde_json",
+ "tokio",
+]
 
 [[package]]
 name = "chapter_14_14_06_json_extractor"
 version = "0.1.0"
+dependencies = [
+ "axum",
+ "serde",
+ "serde_json",
+ "tokio",
+]
 
 [[package]]
 name = "chapter_14_14_07_restful_api_full"
 version = "0.1.0"
+dependencies = [
+ "axum",
+ "serde",
+ "serde_json",
+ "tokio",
+]
 
 [[package]]
 name = "chapter_14_14_08_database_pool"
 version = "0.1.0"
+dependencies = [
+ "axum",
+ "dotenvy",
+ "sqlx",
+ "tokio",
+]
 
 [[package]]
 name = "chapter_14_14_10_shared_pool"
 version = "0.1.0"
+dependencies = [
+ "axum",
+ "dotenvy",
+ "sqlx",
+ "tokio",
+]
 
 [[package]]
 name = "chapter_14_14_12_final_db_app"
 version = "0.1.0"
+dependencies = [
+ "axum",
+ "dotenvy",
+ "serde",
+ "serde_json",
+ "sqlx",
+ "tokio",
+]
 
 [[package]]
 name = "chapter_14_14_13_final_backend_with_cors"
@@ -529,6 +598,13 @@ dependencies = [
 [[package]]
 name = "chapter_14_main"
 version = "0.1.0"
+dependencies = [
+ "axum",
+ "dotenvy",
+ "serde",
+ "serde_json",
+ "tokio",
+]
 
 [[package]]
 name = "chapter_15_01_zero_cost_abstraction"
@@ -3336,14 +3412,15 @@ dependencies = [
 
 [[package]]
 name = "tower-http"
-version = "0.7.0"
+version = "0.5.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b11f75e912b0c2be01b63d8cf8057b8c3f97cf34abb3d431a3a4c8675498e233"
+checksum = "1e9cd434a998747dd2c4276bc96ee2e0c7a2eadf3cae88e52be55a05fa9053f5"
 dependencies = [
  "bitflags 2.13.1",
  "bytes",
  "http",
- "percent-encoding",
+ "http-body",
+ "http-body-util",
  "pin-project-lite",
  "tower-layer",
  "tower-service",

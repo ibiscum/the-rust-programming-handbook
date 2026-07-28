@@ -15,20 +15,6 @@ fn run_binary(binary_name: &str) -> String {
     String::from_utf8_lossy(&output.stdout).to_string()
 }
 
-/// Helper function to check if a binary fails to compile
-fn binary_fails_to_compile(binary_name: &str) -> bool {
-    let output = Command::new("cargo")
-        .args(&[
-            "run",
-            "--package",
-            &format!("chapter_8_{}", binary_name),
-        ])
-        .output()
-        .expect(&format!("Failed to run {}", binary_name));
-
-    !output.status.success()
-}
-
 // ===== Trait Basics and Advanced Usage =====
 
 #[test]
@@ -52,10 +38,12 @@ fn test_02_trait_summarizable() {
 }
 
 #[test]
-fn test_03_impl_trait_notify_fails_to_compile() {
+fn test_03_impl_trait_notify() {
+    let output = run_binary("03_impl_trait_notify");
     assert!(
-        binary_fails_to_compile("03_impl_trait_notify"),
-        "Expected chapter_8_03_impl_trait_notify to fail compilation (intentional error example)"
+        output.contains("Breaking news") && output.contains("rustacean"),
+        "Expected output to contain impl trait notification, got: {}",
+        output
     );
 }
 
