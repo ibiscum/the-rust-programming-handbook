@@ -4,9 +4,11 @@ fn main() {
 
     if temperature > 30 {
         println!("It's too hot! Better get a gelato! 🍦");
-    } else if temperature < 10 {
+    }
+    else if temperature < 10 {
         println!("It's freezing! Time for a warm espresso. ☕");
-    } else {
+    }
+    else {
         println!("Perfect weather for a walk in Rome! 🏛️");
     }
 

@@ -267,6 +267,8 @@ members = [
   "chapter-13/12_mutex_lock_duration",
   "chapter-13-tests",
   "chapter-14-tests",
+  "chapter-15-tests",
+  "chapter-17-tests",
   "chapter-14/14_01_hello_web",
   "chapter-14/14_02_routing_basics",
   "chapter-14/14_03_shared_state",
