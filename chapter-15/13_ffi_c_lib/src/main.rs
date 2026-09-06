@@ -7,12 +7,12 @@ use std::fmt;
 // --- Simulated C Library (For demonstration purposes) ---
 // In a real scenario, these would be in a separate .c file and linked.
 // We implement them here so `cargo run` works out of the box.
-#[no_mangle]
+#[unsafe(no_mangle)]
 pub extern "C" fn multiply(a: c_int, b: c_int) -> c_int {
     a * b
 }
 
-#[no_mangle]
+#[unsafe(no_mangle)]
 pub extern "C" fn greet_person(name: *const c_char) {
     unsafe {
         if name.is_null() {
@@ -28,12 +28,7 @@ pub extern "C" fn greet_person(name: *const c_char) {
     }
 }
 // --------------------------------------------------------
-
-// Declare the C functions we want to call
-extern "C" {
-    fn multiply(a: c_int, b: c_int) -> c_int;
-    fn greet_person(name: *const c_char);
-}
+// Functions above are already defined with extern "C", so we can call them directly
 
 // Define a custom error type for our safe wrapper module
 #[derive(Debug)]
