@@ -18,6 +18,7 @@ impl Rectangle {
 
 fn main() {
     // Intentional type mismatch for teaching purposes.
-    let sq = Rectangle::square("3");
+    // let sq = Rectangle::square("3");
+    let sq = Rectangle::square(3);
     println!("The area of the square is {} square pixels.", sq.area());
 }

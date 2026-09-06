@@ -143,22 +143,9 @@ fn test_developer_mood() {
 }
 
 #[test]
-fn test_why_learn_rust_fails_to_compile() {
-    // why_learn_rust intentionally has a compilation error to demonstrate Rust's safety
-    let output = Command::new("cargo")
-        .args(&[
-            "run",
-            "--package",
-            "chapter_1_why_learn_rust",
-            "--quiet",
-        ])
-        .output()
-        .expect("Failed to check if why_learn_rust compiles");
-
-    assert!(
-        !output.status.success(),
-        "why_learn_rust should fail to compile due to uninitialized variable"
-    );
+fn test_why_learn_rust() {
+    let output = run_binary("why_learn_rust");
+    assert_eq!(output.trim(), "42");
 }
 
 #[test]

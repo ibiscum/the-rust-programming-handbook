@@ -4,14 +4,7 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-<<<<<<< HEAD
-axum = "0.8"
-tokio = { version = "1", features = ["full"] }
-sqlx = { version = "0.9", features = ["runtime-tokio", "tls-rustls", "postgres", "migrate"] }
-dotenvy = "0.15"
-=======
 axum = { workspace = true }
 tokio = { workspace = true, features = ["full"] }
 sqlx = { workspace = true, features = ["runtime-tokio", "tls-rustls", "postgres", "migrate"] }
 dotenvy = { workspace = true }
->>>>>>> aa3c94d (workspce inheritance)
