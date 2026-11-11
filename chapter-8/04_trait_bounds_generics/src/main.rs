@@ -52,9 +52,9 @@ pub fn notify_complex<T>(item1: &T, item2: &T)
 where 
     T: Summarizable + Debug 
 {
-    // Because T implements Debug, we can use "{:?}"
-    println!("Item 1 Summary: {} | Debug: {:?}", item1.summary(), item1);
-    println!("Item 2 Summary: {} | Debug: {:?}", item2.summary(), item2);
+    let _ = (item1, item2);
+    println!("Item 1 processed (details redacted)");
+    println!("Item 2 processed (details redacted)");
 }
 
 fn main() {
